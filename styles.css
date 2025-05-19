@@ -1,82 +1,126 @@
-/* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: white;
+            background: linear-gradient(to right, #000000, #505050);
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
-}
+        .parent-container {
+        position: relative;
+        min-height: 80vh;
+        color: aliceblue;
+        }
 
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-}
+        /* Updated h1 styling with animation */
+        h1 {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        margin: 0;
+        font-size: 3.5rem;
+        font-weight: 700;
+        text-align: center;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        animation: fadeInUp 1s ease-out forwards 0.5s;
+        }
 
-header {
-    background: #333;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-}
+        /* Keyframes for text animation */
+        @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -40%);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+        }
 
-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-}
+        /* Additional styling for the subtitle */
+        .subtitle {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.5rem;
+        font-weight: 300;
+        opacity: 0;
+        animation: fadeIn 1s ease-out forwards 1s;
+        }
 
-header p {
-    margin: 5px 0;
-}
+        @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+        }
 
-.contact p {
-    margin: 0;
-}
 
-.contact a {
-    color: #ffd700;
-    text-decoration: none;
-}
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.7);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
 
-.contact a:hover {
-    text-decoration: underline;
-}
+                :root {
+            --glass-bg: rgba(255, 255, 255, 0.7); /* More opaque for light BG */
+            --glass-border: rgba(0, 0, 0, 0.1); /* Subtle border */
+            --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Soft shadow */
+        }
 
-main {
-    padding: 20px;
-    background: #fff;
-    margin: 20px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+        /* Light Glassmorphism Effect */
+        .glass-navbar {
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            border-bottom: 1px solid var(--glass-border) !important;
+            box-shadow: var(--glass-shadow) !important;
+        }
 
-.section {
-    margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
+        /* Dark text & hover effects */
+        .navbar-brand, .nav-link {
+            color: white !important; /* Dark text */
+            font-weight: 500;
+        }
 
-.section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
 
-.section h2 {
-    border-bottom: 2px solid #333;
-    padding-bottom: 5px;
-    margin-bottom: 15px;
-}
+        .nav-link:hover {
+        color: white; 
+        opacity: 0.9;
+        }
 
-.section ul {
-    list-style-type: disc;
-    margin: 10px 0 10px 20px;
-}
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #333; /* Dark underline */
+            bottom: -2px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
 
-footer {
-    text-align: center;
-    padding: 10px;
-    background: #333;
-    color: #fff;
-}
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.show {
+        opacity: 1;
+        transform: translateY(0);
+        }
+
+        

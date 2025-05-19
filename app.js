@@ -1,22 +1,13 @@
-// app.js
+const faders = document.querySelectorAll('.fade-in');
 
-document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll(".section");
-
-    const options = {
-        threshold: 0.1,
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                observer.unobserve(entry.target); // Stop observing once the animation is triggered
-            }
-        });
-    }, options);
-
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, {
+  threshold: 0.1
 });
+
+faders.forEach(fader => observer.observe(fader));
